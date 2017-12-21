@@ -1,0 +1,15 @@
+
+# IDE
+.idea
+
+# mac
+.DS_Store
+
+# node modules
+node_modules/
+npm-debug.log
+npm-lock.log
+package-lock.json
+
+# logs
+logs/*/*.log

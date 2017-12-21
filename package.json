@@ -1,0 +1,15 @@
+{
+  "name": "express-access-logger",
+  "version": "0.0.1",
+  "description": "express日志中间件",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "occultskyrong",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "log4js": "^2.4.1"
+  }
+}
