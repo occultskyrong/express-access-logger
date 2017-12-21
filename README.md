@@ -16,7 +16,7 @@ npm i express-access-logger -S
 
 根目录下`_test.js`为可运行express服务
 		
-	```
+	```
 	const express = require('express');
 	const expressAccessLogger = require('./index');
 	const bodyParser = require('body-parser');
