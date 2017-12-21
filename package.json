@@ -1,6 +1,6 @@
 {
   "name": "express-access-logger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "express日志中间件",
   "main": "index.js",
   "scripts": {
@@ -11,5 +11,14 @@
   "dependencies": {
     "express": "^4.16.2",
     "log4js": "^2.4.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/occultskyrong/express-access-logger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/occultskyrong/express-access-logger/issues"
+  },
+  "homepage": "https://github.com/occultskyrong/express-access-logger#readme"
 }
