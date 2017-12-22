@@ -130,6 +130,8 @@ app.use(expressAccessLogger());
 - Git tag
 
 ```
+## 列出现有标签
+git tag
 ## 创建一个含附注类型的标签
 git tag -a 0.0.1 -m 'tag message'
 ## 分享标签到远端仓库
