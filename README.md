@@ -149,7 +149,7 @@ app.use(expressAccessLogger());
 - npm publish
 
 ```
-npm publish --tag 0.0.1
+npm publish
 ```
 
  	
