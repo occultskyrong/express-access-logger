@@ -47,6 +47,7 @@ app.use(expressAccessLogger());
 |`debug`|开启debug模式:直接输出json格式log|boolean|-|true|
 
 - #### 栗子：
+
 	- `log4jsConfig`
 	
 		缺省值，log4js的配置
@@ -125,6 +126,28 @@ app.use(expressAccessLogger());
  	[2017-12-21T19:03:01.261] [INFO] access - {"uuid":"1-23-4","remoteIP":"127.0.0.1","originalUrl":"/test/1?a=1","appKey":"AC-B-D","req":{"method":"POST","header":{"Content-Type":"application/x-www-form-urlencoded"},"query":{"a":"1"},"body":{"bb":"2"},"requestAt":"2017-12-21 19:03:00"},"res":{"status":200,"responseTime":"1259.850ms","responseAt":"2017-12-21 19:03:01"},"token":"12321321312321321"}
  	```
  	
+## `npm`发布流程
+- Git tag
+
+```
+## 创建一个含附注类型的标签
+git tag -a 0.0.1 -m 'tag message'
+## 分享标签到远端仓库
+git push origin 0.0.1
+## 一次推送所有本地新增的标签上去
+git push origin --tags
+## 删除本地tag
+git tag -d 0.0.1
+## 删除远程tag
+git push origin :0.0.1
+```
+
+- npm publish
+
+```
+npm publish --tag 0.0.1
+```
+
  	
 ## [MIT LICENSE](./LICENSE.txt)
 > 无需声明,随意copy或者fork

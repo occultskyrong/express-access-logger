@@ -17,8 +17,15 @@ Date.prototype.format = DateForm; // Date原型链绑定时间格式化函数
 
 /**
  * 绑定到express的日志文件中间件
- * @param {object} option 配置信息
- * @return {function(*, *, *)} 标准请求-响应拦截结构
+ * @param {Object}                  [option] 配置信息
+ * @param {String}                  [option.uuid] 唯一标识符,用于全链路追踪
+ * @param {String|Function}         [option.logger] 日志记录器
+ * @param {Boolean|Object}          [option.log4jsConfig] log4js配置
+ * @param {String}                  [option.log4jsLogger] log4js中logger的name
+ * @param {Function|String|Boolean} [option.token] token的的取值key
+ * @param {String}                  [option.appKey] 系统标识符
+ * @param {Boolean}                 [option.debug] 开启debug模式
+ * @return {function(Object, Object, Function)} 标准请求-响应拦截结构
  */
 module.exports = (option = {})=> {
     option = getOption(option); // 获取配置信息
@@ -140,7 +147,10 @@ function getLog4js(config) {
 
 /**
  * 获取log4js默认配置
- * @param {object} config
+ * @param {object} [config]
+ * @param {Object} [config.log4jsConfig.appenders]
+ * @param {Object} [config.log4jsConfig.categories]
+ * @param {Object} [config.log4jsConfig.categories.default]
  * @return {*}
  */
 function getLog4jsConfig(config) {
