@@ -152,6 +152,8 @@ app.use(expressAccessLogger());
 npm publish
 ```
 
+## TODO list
+- log4js的日志%d，为2017-01-01T00:00:00
  	
 ## [MIT LICENSE](./LICENSE.txt)
 > 无需声明,随意copy或者fork
