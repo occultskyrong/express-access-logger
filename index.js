@@ -29,7 +29,7 @@ Date.prototype.format = DateForm; // Date原型链绑定时间格式化函数
  */
 module.exports = (option = {})=> {
     option = getOption(option); // 获取配置信息
-    const TIME_FORMAT = 'yyyy-MM-dd hh:mm:ss';
+    const TIME_FORMAT = 'yyyy-MM-dd hh:mm:ss.S';
     let log = {};
     return (req, res, next)=> {
         const startedAt = process.hrtime(); // 获取高精度时间
