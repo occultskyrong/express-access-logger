@@ -13,8 +13,6 @@
  * http://expressjs.com/en/4x/api.html#req.body
  */
 
-Date.prototype.format = DateForm; // Date原型链绑定时间格式化函数
-
 /**
  * 绑定到express的日志文件中间件
  * @param {Object}                  [option] 配置信息
@@ -45,7 +43,7 @@ module.exports = (option = {})=> {
                 },
                 query: req.query,
                 body: req.body,
-                requestAt: new Date().format(TIME_FORMAT),
+                requestAt: _dateFormat(new Date(), TIME_FORMAT),
             },
             res: {},
         };
@@ -68,7 +66,7 @@ module.exports = (option = {})=> {
             log.res = {
                 status: res.statusCode,
                 responseTime: calcResponseTime(startedAt),
-                responseAt: new Date().format(TIME_FORMAT),
+                responseAt: _dateFormat(new Date(), TIME_FORMAT),
             };
             if (option.debug) {
                 console.log(log);
@@ -197,28 +195,35 @@ function getIP(req) {
     } else {
         ip = req.connection.remoteAddress;
     }
+    if (!ip) { // 无法获取到IP信息
+        return '0.0.0.0';
+    }
     const ipArr = ip.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g);
     return ipArr && ipArr.length > 0 ? ipArr[0] : '127.0.0.1';
 }
 
 /**
- * Date绑定时间格式化函数
- * @param {string} format
+ * 时间格式化函数
+ * @param {Date}        date        时间
+ * @param {string}      format      格式化字符串
  * @return {*}
  */
-function DateForm(format) {
+function _dateFormat(date, format = 'yyyy-MM-dd hh:mm:ss.S') {
+    if (!(date instanceof Date)) {
+        date = new Date();
+    }
     let o = {
-        'M+': this.getMonth() + 1, // month
-        'd+': this.getDate(), // day
-        'h+': this.getHours(), // hour
-        'm+': this.getMinutes(), // minute
-        's+': this.getSeconds(), // second
-        'w+': this.getDay(), // week
-        'q+': Math.floor((this.getMonth() + 3) / 3), // quarter
-        'S': this.getMilliseconds(), // millisecond
+        'M+': date.getMonth() + 1, // month
+        'd+': date.getDate(), // day
+        'h+': date.getHours(), // hour
+        'm+': date.getMinutes(), // minute
+        's+': date.getSeconds(), // second
+        'w+': date.getDay(), // week
+        'q+': Math.floor((date.getMonth() + 3) / 3), // quarter
+        'S': date.getMilliseconds(), // millisecond
     };
     if (/(y+)/.test(format)) {// year
-        format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+        format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
     }
     for (let k in o) {
         if (new RegExp('(' + k + ')').test(format)) {

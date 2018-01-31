@@ -8,7 +8,7 @@
 
 // TODO 先安装express
 const express = require('express');
-const expressAccessLogger = require('./index');
+const expressAccessLogger = require('../index');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-w
 app.use(expressAccessLogger({
     logger: 'log4js', // 建议配置
     appKey: 'AC-B-D', // 最低配置
-    debug: false, // 建议配置
+    // debug: false, // 建议配置
 }));
 
 app.post('/test/:id', (req, res)=> {
@@ -37,6 +37,7 @@ app.post('/test/:id', (req, res)=> {
 
 app.listen(3000, ()=> {
     console.info('------- 启动服务 -------');
+    console.info('----- 请求:http://localhost:3000 查看后端日志');
 });
 
 

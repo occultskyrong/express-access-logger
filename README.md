@@ -14,11 +14,11 @@ npm i express-access-logger -S
 
 ## 用法
 
-根目录下`_test.js`为可运行express服务
+举个栗子 : 根目录下`test/index.js`为可运行express服务栗子
 		
 ```
 const express = require('express');
-const expressAccessLogger = require('./index');
+const expressAccessLogger = require('../index');
 const bodyParser = require('body-parser');
 	
 const app = express();
@@ -39,7 +39,7 @@ app.use(expressAccessLogger());
 |参数|说明|字段类型|取值|默认值|
 |:---|:---|:---|:---|:---|
 |`uuid`|唯一标识符,用于全链路追踪|string|-|uuid|
-|`logger`|日志记录器,用于日志记录|'string',Function|'console','log4js',function|console.log|
+|`logger`|日志记录器,用于日志记录|string,Function|'console','log4js',function|console.log|
 |`log4jsConfig `|log4js配置,logger为log4js时读取此参数|boolean,Object|false,object|false|
 |`log4jsLogger`|log4js中logger的name,配置log4jsConfig时必须传入此参数|string|-|access|
 |`token `|token的的取值,从header中读取|Function,string,boolean|function,'authorization',false|authorization|
@@ -79,7 +79,7 @@ app.use(expressAccessLogger());
 
 ## 结果说明
 
-- remoteIP
+- remoteIP(具体实现可能变化,请自行查看源码)
  	
  	```
  	/**
@@ -130,6 +130,7 @@ app.use(expressAccessLogger());
 - Git tag
 
 ```
+## 修改package.json中version
 ## 列出现有标签
 	git tag
 ## 创建一个含附注类型的标签
@@ -151,6 +152,11 @@ app.use(expressAccessLogger());
 ```
 npm publish
 ```
+
+## 更新历史
+
+|版本|内容|节点|
+|0.0.5|更新文档说明和实现逻辑|2018年01月31日|
 
 ## TODO list
 - log4js的日志%d，为2017-01-01T00:00:00
