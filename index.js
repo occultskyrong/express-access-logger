@@ -124,7 +124,7 @@ function getOption(option) {
     if ('appKey' in option && typeof option.appKey === 'string') {
         o.appKey = option.appKey;
     } else {
-        console.error(new Error('缺少系统标记字段'));
+        console.warn(new Error('缺少系统标记字段'));
         o.appKey = 'DEFAULT-APP';
     }
     // 是否开启debug模式:直接输出json格式log

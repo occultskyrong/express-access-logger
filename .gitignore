@@ -13,3 +13,4 @@ package-lock.json
 
 # logs
 logs/*/*.log
+test/logs/*
