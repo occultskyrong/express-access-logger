@@ -44,7 +44,7 @@ app.use(expressAccessLogger());
 |`log4jsLogger`|log4js中logger的name,配置log4jsConfig时必须传入此参数|string|-|access|
 |`token `|token的的取值,从header中读取|Function,string,boolean|function,'authorization',false|authorization|
 |`appKey`|系统标识符|string|-|DEFAULT-APP|
-|`debug`|开启debug模式:直接输出json格式log|boolean|-|true|
+|`debug`|开启debug模式:直接输出json格式log|boolean|-|false|
 
 - #### 栗子：
 
@@ -158,6 +158,7 @@ npm publish
 |版本|内容|节点|
 |:---|:---|:---|
 |0.0.5|更新文档说明和实现逻辑|2018年01月31日|
+|0.0.6|更新文档说明、默认关闭debug|2018年02月01日|
 
 ## TODO list
 - [已解决] log4js的日志%d，为2017-01-01T00:00:00

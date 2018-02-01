@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-w
 app.use(expressAccessLogger({
     logger: 'log4js', // 建议配置
     appKey: 'AC-B-D', // 最低配置
-    // debug: false, // 建议配置
 }));
 
 app.post('/test/:id', (req, res)=> {
