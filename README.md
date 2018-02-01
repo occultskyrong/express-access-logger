@@ -159,7 +159,9 @@ npm publish
 |0.0.5|更新文档说明和实现逻辑|2018年01月31日|
 
 ## TODO list
-- log4js的日志%d，为2017-01-01T00:00:00
+- [已解决] log4js的日志%d，为2017-01-01T00:00:00
+
+    >  参见 [log4js-node/log4js-node > Letter T appearing between date and time](https://github.com/log4js-node/log4js-node/issues/634)
  	
 ## [MIT LICENSE](./LICENSE.txt)
 > 无需声明,随意copy或者fork
