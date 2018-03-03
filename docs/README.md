@@ -1,8 +1,8 @@
 
 # 用法&说明
 
-## FAQ&用法
-### 如何使用？
+## 1. FAQ&用法
+### 1.1 如何使用？
 
 举个栗子 : 根目录下`test/index.js`为可运行express服务栗子
 
@@ -22,14 +22,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressAccessLogger());
 ```
 
-### `log4js`的日志中，`%d`为`2017-01-01T00:00:00`
+### 1.2 `log4js`的日志中，`%d`为`2017-01-01T00:00:00`
 - 需要解决的问题：日期与时间之间的`T`标记，如何去除？
 - 可行的解决方案：
 
 >  参见 [log4js-node/log4js-node > Letter T appearing between date and time](https://github.com/log4js-node/log4js-node/issues/634)
 
-## 参数
-### 参数列表
+## 2. 参数
+### 2.1 参数列表
 
 |参数|说明|字段类型|取值|默认值|
 |:---|:---|:---|:---|:---|
@@ -41,7 +41,7 @@ app.use(expressAccessLogger());
 |`appKey`|系统标识符|string|-|DEFAULT-APP|
 |`debug`|开启debug模式:直接输出json格式log|boolean|-|false|
 
-### 栗子：
+### 2.2 栗子：
 
 - `log4jsConfig`
 
@@ -74,7 +74,7 @@ app.use(expressAccessLogger());
 
     `function(req)` 回调函数的参数为req，例如`(req)=>req.header('authorization')`
 
-## 结果说明
+## 3. 结果说明
 
 - remoteIP(**具体实现可能变化,请自行查看源码**)
 

@@ -4,7 +4,6 @@
  * @version 0.0.1 created
  */
 
-'use strict';
 
 // TODO 先安装express
 const express = require('express');
@@ -14,27 +13,35 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // —————列出现有标签——— 加入中间件 ——————————
 app.use(expressAccessLogger({
     logger: 'log4js', // 建议配置
     appKey: 'AC-B-D', // 最低配置
+    debug: true,
 }));
 
-app.post('/test/:id', (req, res)=> {
-    console.info('————————',
+app.get('/test/:id', (req, res) => {
+    console.info(
+        '————————',
         'originalUrl:', req.originalUrl,
         'query:', req.query,
         'body:', req.body,
-        'params:', req.params
+        'params:',
+        req.params,
     );
-    setTimeout(()=> {
-        res.json(true);
+    setTimeout(() => {
+        res.json({
+            a: 1,
+            b: 2,
+            c: true,
+            d: { e: 5 },
+        });
     }, 1251);
 });
 
-app.listen(3000, ()=> {
+app.listen(3000, () => {
     console.info('------- 启动服务 -------');
     console.info('----- 请求:http://localhost:3000 查看后端日志');
 });

@@ -3,4 +3,14 @@
  * Copyright© 2015-2020 occultskyrong (https://github.com/occultskyrong)
  * @version 0.0.1 created
  */
- 
+
+const { getOption } = require('./log4js');
+const { datetimeFormat, calcResponseTime } = require('./datetime');
+const { getIP } = require('./ip');
+
+module.exports = {
+    getOption,
+    datetimeFormat,
+    calcResponseTime,
+    getIP,
+};
