@@ -8,9 +8,6 @@
   },
   "author": "occultskyrong",
   "license": "MIT",
-  "dependencies": {
-    "log4js": "^2.4.1"
-  },
   "devDependencies": {},
   "repository": {
     "type": "git",
@@ -19,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/occultskyrong/express-access-logger/issues"
   },
-  "homepage": "https://github.com/occultskyrong/express-access-logger#readme"
+  "homepage": "https://github.com/occultskyrong/express-access-logger#readme",
+  "dependencies": {}
 }

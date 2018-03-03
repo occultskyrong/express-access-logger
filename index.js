@@ -4,8 +4,6 @@
  * @version 0.0.1 created
  */
 
-'use strict';
-
 /*
  * 参考文档
  * http://nodejs.cn/api/process.html#process_process_hrtime_time
@@ -25,11 +23,11 @@
  * @param {Boolean}                 [option.debug]              是否开启debug模式,默认关闭
  * @return {function(Object, Object, Function)}                 标准请求-响应拦截结构
  */
-module.exports = (option = {})=> {
+module.exports = (option = {}) => {
     option = getOption(option); // 获取配置信息
     const TIME_FORMAT = 'yyyy-MM-dd hh:mm:ss.S';
     let log = {};
-    return (req, res, next)=> {
+    return (req, res, next) => {
         const startedAt = process.hrtime(); // 获取高精度时间
         log = {
             uuid: req.header(option.uuid),
@@ -62,7 +60,8 @@ module.exports = (option = {})=> {
         /**
          * 响应回调
          */
-        function responseCallback() {
+        function responseCallback(...args) {
+            console.info(args)
             log.res = {
                 status: res.statusCode,
                 responseTime: calcResponseTime(startedAt),
@@ -102,7 +101,7 @@ function getOption(option) {
             const log4js = getLog4js('log4jsConfig' in option ? option.log4jsConfig : undefined);
             const logger = log4js.getLogger('log4jsLogger' in option ? option.log4jsLogger : 'access');
             logger.level = 'info';
-            o.log = (...args)=>logger.info(JSON.stringify(args[0]));
+            o.log = (...args) => logger.info(JSON.stringify(args[0]));
         }
     } else {
         o.log = console.log; // 默认为控制台输出
@@ -111,14 +110,14 @@ function getOption(option) {
     if ('token' in option) {
         const token = option.token;
         if (token === false) {
-            o.token = (req)=>false;
+            o.token = (req) => false;
         } else if (typeof token === 'string') {
-            o.token = (req)=>req.header(token);
+            o.token = (req) => req.header(token);
         } else if (token instanceof Function) {
-            o.token = (req)=>token(req);
+            o.token = (req) => token(req);
         }
     } else {
-        o.token = (req)=>req.header('authorization');
+        o.token = (req) => req.header('authorization');
     }
     // 系统标记
     if ('appKey' in option && typeof option.appKey === 'string') {
@@ -156,14 +155,16 @@ function getLog4jsConfig(config) {
         appenders: {
             out: { // console-log
                 type: 'stdout',
-            }, access: { // access-log
+            },
+            access: { // access-log
                 type: 'dateFile',
                 filename: './logs/access/access.log', // 基于调用者地址的同级logs文件夹
                 pattern: '.yyyy-MM-dd', // 日志名格式
                 daysToKeep: '30', // 最长留存30天日志
                 keepFileExt: true, // 保证.log扩展名,即access.2017-09-21.log
             },
-        }, categories: {
+        },
+        categories: {
             default: { // 解析器可能变更名称,直接使用default
                 appenders: ['access', 'out'],
                 level: 'info',
@@ -173,14 +174,11 @@ function getLog4jsConfig(config) {
     if (config) {
         if (typeof config === 'object' && Object.keys(config).length > 0) {
             return config;
-        } else {
-            console.error(new Error('log4jsConfig must be an object !'));
-            return defaultConfig;
         }
-    } else {
-        // log4js默认配置
-        return defaultConfig;
+        console.error(new Error('log4jsConfig must be an object !'));
     }
+    // log4js默认配置
+    return defaultConfig;
 }
 
 /**
@@ -212,7 +210,7 @@ function _dateFormat(date, format = 'yyyy-MM-dd hh:mm:ss.S') {
     if (!(date instanceof Date)) {
         date = new Date();
     }
-    let o = {
+    const o = {
         'M+': date.getMonth() + 1, // month
         'd+': date.getDate(), // day
         'h+': date.getHours(), // hour

@@ -1,15 +1,17 @@
 {
   "env": {
-    "browser": true,
     "node": true,
-    "jquery": true,
     "es6": true
   },
   "globals": {
     "GLO": true
   },
-  "extends": "google",
+  "extends": "airbnb-base",
   "rules": {
+    "indent": [
+      2,
+      4
+    ],
     "max-len": [
       2,
       120
