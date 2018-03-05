@@ -24,6 +24,7 @@ npm i express-access-logger -S
 
 ## 4.TODO list
 - **[已解决]** `log4js`的日志中，`%d`为`2017-01-01T00:00:00`
+- 响应结果的日志记录，使用bind函数实现
 
 ## 5.[说明文档](./docs/README.md)
 
