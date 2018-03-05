@@ -39,16 +39,17 @@ module.exports = (defaultOption = {}) => {
         const startedAt = process.hrtime(); // 获取高精度时间
         /**
          * 响应回调
+         * https://stackoverflow.com/questions/32973307/express-response-payload-on-response-finish
          */
         const responseCallback = () => {
             const {
                 statusCode,
             } = res;
-            log.res = {
+            log.res = Object.assign(log.res, {
                 statusCode,
                 responseTime: calcResponseTime(startedAt),
                 responseAt: datetimeFormat(new Date(), TIME_FORMAT),
-            };
+            });
             if (option.debug) {
                 console.log(log);
             }
@@ -74,6 +75,15 @@ module.exports = (defaultOption = {}) => {
         if (option.token) {
             log.token = option.token(req);
         }
+
+        // TODO 配置：是否使用重定向数据，使用哪些重定向，拆分此方法到response.js中，可插拔
+        const old = res.json.bind(res);
+        res.json = (body) => {
+            console.info(33333);
+            log.res.body = body;
+            old(body);
+        };
+
         // 有响应的返回
         res.once('finish', responseCallback);
 
