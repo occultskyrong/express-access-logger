@@ -40,6 +40,7 @@ app.use(expressAccessLogger());
 |`token `|token的的取值,从header中读取|Function,string,boolean|function,'authorization',false|authorization|
 |`appKey`|系统标识符|string|-|DEFAULT-APP|
 |`debug`|开启debug模式:直接输出json格式log|boolean|-|false|
+|`headers`|需要读取的`header`信息|array|-|`['User-Agent', 'Content-Type']`|
 
 ### 2.2 栗子：
 

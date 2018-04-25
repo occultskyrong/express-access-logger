@@ -18,8 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 // —————列出现有标签——— 加入中间件 ——————————
 app.use(expressAccessLogger({
     logger: 'log4js', // 建议配置
-    appKey: 'AC-B-D', // 最低配置
+    appKey: 'eal-test', // 最低配置
     debug: true,
+    headers: ['x-test-key', 'Content-Length'],
 }));
 
 app.get('/test/:id', (req, res) => {

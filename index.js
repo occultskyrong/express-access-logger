@@ -62,10 +62,7 @@ module.exports = (defaultOption = {}) => {
             appKey: option.appKey,
             req: {
                 method: req.method,
-                header: {
-                    'User-Agent': req.header('User-Agent') || '',
-                    'Content-Type': req.header('Content-Type') || '',
-                },
+                header: option.getHeaders(req),
                 query: req.query,
                 body: req.body,
                 requestAt: datetimeFormat(new Date(), TIME_FORMAT),
@@ -76,7 +73,10 @@ module.exports = (defaultOption = {}) => {
             log.token = option.token(req);
         }
 
-        // TODO 配置：是否使用重定向数据，使用哪些重定向，拆分此方法到response.js中，可插拔
+        /**
+         * 配置：是否使用重定向数据，使用哪些重定向，拆分此方法到response.js中，可插拔
+         * 用于手机response数据
+         */
         const old = res.json.bind(res);
         res.json = (body) => {
             console.info(33333);

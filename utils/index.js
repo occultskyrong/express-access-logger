@@ -4,7 +4,7 @@
  * @version 0.0.1 created
  */
 
-const { getOption } = require('./log4js');
+const { getOption } = require('./option');
 const { datetimeFormat, calcResponseTime } = require('./datetime');
 const { getIP } = require('./ip');
 
