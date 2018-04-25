@@ -6,7 +6,7 @@
 - 安装方式：
 
 ```
-npm i express-access-logger -S 
+npm i express-access-logger -S
 ```
 
 ## 2.主要功能
@@ -18,12 +18,12 @@ npm i express-access-logger -S
 
 |版本|内容|节点|
 |:---|:---|:---|
-|0.0.5|更新文档说明和实现逻辑|2018年01月31日|
-|0.0.6|更新文档说明、默认关闭debug|2018年02月01日|
-|0.1.0|切换eslint模式，日志中增加响应结果|2018年03月03日|
+|0.0.5|更新 - 文档说明和实现逻辑|2018年01月31日|
+|0.0.6|更新 - 文档说明、默认关闭debug|2018年02月01日|
+|0.0.7|新增 - 读取header中自定义key|2018年04月25日|
+|0.0.8|新增 - development开发分支，使用issue管理开发进度|2018年04月25日|
 
 ## 4.TODO list
-- **[已解决]** `log4js`的日志中，`%d`为`2017-01-01T00:00:00`
 - 响应结果的日志记录，使用bind函数实现
 
 ## 5.[说明文档](./docs/README.md)
@@ -32,5 +32,5 @@ npm i express-access-logger -S
 
 > 无需声明,随意copy或者fork
 
-[MIT LICENSE] [license](./LICENSE.txt)
+[MIT LICENSE](./LICENSE.txt)
 
