@@ -74,15 +74,14 @@ module.exports = (defaultOption = {}) => {
         }
 
         /**
-         * 配置：是否使用重定向数据，使用哪些重定向，拆分此方法到response.js中，可插拔
+         * TODO 配置：是否使用重定向数据，使用哪些重定向，拆分此方法到response.js中，可插拔
          * 用于手机response数据
          */
-        const old = res.json.bind(res);
-        res.json = (body) => {
-            console.info(33333);
-            log.res.body = body;
-            old(body);
-        };
+        // const old = res.json.bind(res);
+        // res.json = (body) => {
+        //     log.res.body = body;
+        //     old(body);
+        // };
 
         // 有响应的返回
         res.once('finish', responseCallback);
