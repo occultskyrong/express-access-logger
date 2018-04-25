@@ -1,6 +1,6 @@
 {
   "name": "express-access-logger",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "express日志中间件",
   "main": "index.js",
   "scripts": {
